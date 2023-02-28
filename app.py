@@ -40,11 +40,13 @@ def upload_image():
     else :
         print(' No image')
 
-    with open(os.path.join('static/', filename),
+    with open(os.path.join('static/', 'filename.png'),
                   'wb') as f:
         f.write(file_data)
 
-    return render_template('upload.html', filename=filename)
+
+
+    return render_template('upload.html', filename='filename.png')
 
 
 def make_grayscale(decode_array_to_img):
@@ -91,7 +93,7 @@ def invert(decode_array_to_img):
 def HDR(decode_array_to_img):
     hdr_effect = cv2.detailEnhance(decode_array_to_img , sigma_s = 12 , sigma_r = 0.15)
     status, output_img = cv2.imencode('.PNG', hdr_effect)
-    
+
     return output_img
 
 
